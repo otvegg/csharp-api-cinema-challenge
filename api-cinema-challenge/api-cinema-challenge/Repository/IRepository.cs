@@ -1,8 +1,11 @@
-﻿namespace api_cinema_challenge.Repository
+﻿using System.Linq.Expressions;
+
+namespace api_cinema_challenge.Repository
 {
     public interface IRepository<T>
     {
         Task<IEnumerable<T>> Get();
+        Task<IEnumerable<T>> Get(Expression<Func<T, bool>> filter);
         Task<T> Insert(T entity);
         Task<T> Update(T entity);
         Task<T?> Delete(object id);

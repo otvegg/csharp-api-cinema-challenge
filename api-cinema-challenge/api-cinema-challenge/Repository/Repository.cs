@@ -1,5 +1,6 @@
 ﻿using api_cinema_challenge.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace api_cinema_challenge.Repository
 {
@@ -17,6 +18,11 @@ namespace api_cinema_challenge.Repository
         public async Task<IEnumerable<T>> Get()
         {
             return await _table.ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> filter)
+        {
+            return await _table.Where(filter).ToListAsync();
         }
 
         public async Task<T> Insert(T entity)

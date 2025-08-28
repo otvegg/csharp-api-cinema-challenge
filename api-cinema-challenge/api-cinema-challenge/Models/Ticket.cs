@@ -7,13 +7,12 @@ namespace api_cinema_challenge.Models
     public class Ticket
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public int NumSeats { get; set; }
         [ForeignKey("customer")]
-        public Guid CustomerId { get; set; }
+        public int CustomerId { get; set; }
         [ForeignKey("screening")]
-        public Guid ScreeningId { get; set; }
+        public int ScreeningId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
